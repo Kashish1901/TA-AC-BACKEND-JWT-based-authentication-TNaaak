@@ -1,8 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../models/User");
+var auth = require("../middelwares/auth");
+
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+
+router.get("/", auth.verifyToken, function (req, res, next) {
   res.send("respond with a resource");
 });
 
