@@ -6,7 +6,7 @@ var auth = require("../middelwares/auth");
 router.get("/", auth.verifyToken, async (req, res, next) => {
   try {
     var user = await User.findOne({});
-    res.json({ user: user.userJSON(token) });
+    res.json({ user });
   } catch (error) {
     return next(error);
   }
